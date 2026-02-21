@@ -1,4 +1,4 @@
-name: Minio-dotnet Tests
+name: Hanzo S3 .NET SDK Tests
 
 on:
   push:

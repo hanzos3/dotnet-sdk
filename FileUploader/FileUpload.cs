@@ -1,5 +1,5 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage, (C) 2017-2021 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage, (C) 2017-2021 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ public static class FileUpload
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
                                                | SecurityProtocolType.Tls11
                                                | SecurityProtocolType.Tls12;
-        var endpoint = "play.min.io";
+        var endpoint = "s3.hanzo.ai";
         var accessKey = "Q3AM3UQ867SPQQA43P2F";
         var secretKey = "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG";
 

@@ -1,5 +1,5 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage, (C) 2017 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage, (C) 2017 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ internal sealed class MintLogger
     /// <summary>
     ///     SDK Name
     /// </summary>
-    public string Name { get; } = "minio-dotnet";
+    public string Name { get; } = "hanzos3-dotnet";
 
     /// <summary>
     ///     Test function name

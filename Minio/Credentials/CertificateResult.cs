@@ -1,6 +1,6 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage,
- * (C) 2022 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage,
+ * (C) 2022 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ using Minio.DataModel;
 
 /*
  * Certificate Identity Credential provider.
- * This is a MinIO Extension to AssumeRole STS APIs on
+ * This is a Hanzo S3 Extension to AssumeRole STS APIs on
  * AWS, purely based on client certificates mTLS authentication.
  */
 

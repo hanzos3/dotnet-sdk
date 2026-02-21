@@ -1,5 +1,5 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage, (C) 2017 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage, (C) 2017 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ public static class MinioClientExtensions
         {
             var assembly = Assembly.GetExecutingAssembly();
             var version = assembly.GetName().Version;
-            var release = $"minio-dotnet/{version}";
+            var release = $"hanzos3-dotnet/{version}";
 #if NET46
 		string arch = Environment.Is64BitOperatingSystem ? "x86_64" : "x86";
 		return $"MinIO ({Environment.OSVersion};{arch}) {release}";

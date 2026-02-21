@@ -1,6 +1,6 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage,
- * (C) 2017, 2018, 2019, 2020 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage,
+ * (C) 2017, 2018, 2019, 2020 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -195,7 +195,7 @@ public class UtilsTest
         Assert.IsTrue(S3utils.IsAmazonEndPoint("s3.amazonaws.com"));
         Assert.IsTrue(S3utils.IsAmazonEndPoint("s3.cn-north-1.amazonaws.com.cn"));
         Assert.IsFalse(S3utils.IsAmazonEndPoint("s3.us-west-1amazonaws.com"));
-        Assert.IsFalse(S3utils.IsAmazonEndPoint("play.min.io"));
+        Assert.IsFalse(S3utils.IsAmazonEndPoint("s3.hanzo.ai"));
         Assert.IsFalse(S3utils.IsAmazonEndPoint("192.168.12.1"));
         Assert.IsFalse(S3utils.IsAmazonEndPoint("storage.googleapis.com"));
     }
@@ -206,7 +206,7 @@ public class UtilsTest
         Assert.IsFalse(S3utils.IsAmazonChinaEndPoint("s3.amazonaws.com"));
         Assert.IsTrue(S3utils.IsAmazonChinaEndPoint("s3.cn-north-1.amazonaws.com.cn"));
         Assert.IsFalse(S3utils.IsAmazonChinaEndPoint("s3.us-west-1amazonaws.com"));
-        Assert.IsFalse(S3utils.IsAmazonChinaEndPoint("play.min.io"));
+        Assert.IsFalse(S3utils.IsAmazonChinaEndPoint("s3.hanzo.ai"));
         Assert.IsFalse(S3utils.IsAmazonChinaEndPoint("192.168.12.1"));
         Assert.IsFalse(S3utils.IsAmazonChinaEndPoint("storage.googleapis.com"));
     }

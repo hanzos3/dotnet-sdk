@@ -1,17 +1,17 @@
-# MinIO Client SDK for .NET  
+# Hanzo S3 .NET SDK
 
-MinIO Client SDK provides higher level APIs for MinIO and Amazon S3 compatible cloud storage services.For a complete list of APIs and examples, please take a look at the [Dotnet Client API Reference](https://min.io/docs/minio/linux/developers/dotnet/API.html).This document assumes that you have a working VisualStudio development environment.
+Hanzo S3 .NET SDK provides higher level APIs for Hanzo S3 and Amazon S3 compatible cloud storage services. For a complete list of APIs and examples, please take a look at the [.NET Client API Reference](./Docs/API.md). This document assumes that you have a working VisualStudio development environment.
 
-[![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io) [![Github Actions](https://github.com/minio/minio-dotnet/actions/workflows/minio-dotnet.yml/badge.svg)](https://github.com/minio/minio-dotnet/actions) [![Nuget](https://img.shields.io/nuget/dt/Minio?logo=nuget&label=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FMinio)](https://www.nuget.org/packages/Minio/) [![GitHub tag (with filter)](https://img.shields.io/github/v/tag/minio/minio-dotnet?label=latest%20release)](https://github.com/minio/minio-dotnet/releases)
+[![Github Actions](https://github.com/hanzos3/dotnet-sdk/actions/workflows/minio-dotnet.yml/badge.svg)](https://github.com/hanzos3/dotnet-sdk/actions) [![Nuget](https://img.shields.io/nuget/dt/Minio?logo=nuget&label=nuget&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FMinio)](https://www.nuget.org/packages/Minio/) [![GitHub tag (with filter)](https://img.shields.io/github/v/tag/hanzos3/dotnet-sdk?label=latest%20release)](https://github.com/hanzos3/dotnet-sdk/releases)
 
 ## Install from NuGet
-To install [MinIO .NET package](https://www.nuget.org/packages/Minio/), run the following command in Nuget Package Manager Console.
+To install the [Minio NuGet package](https://www.nuget.org/packages/Minio/), run the following command in NuGet Package Manager Console.
 
 ```powershell
 PM> Install-Package Minio
 ```
 
-## MinIO Client Example for ASP.NET
+## Hanzo S3 Client Example for ASP.NET
 
 When using `AddMinio` to add Minio to your ServiceCollection, Minio will also use any custom Logging providers you've added, like Serilog to output traces when enabled.
 
@@ -21,9 +21,9 @@ using Minio.DataModel.Args;
 
 public static class Program
 {
-    var endpoint = "play.min.io";
-    var accessKey = "minioadmin";
-    var secretKey = "minioadmin";
+    var endpoint = "s3.hanzo.ai";
+    var accessKey = "YOUR-ACCESSKEY";
+    var secretKey = "YOUR-SECRETKEY";
 
     public static void Main(string[] args)
     {
@@ -36,9 +36,9 @@ public static class Program
         builder.Services.AddMinio(configureClient => configureClient
             .WithEndpoint(endpoint)
             .WithCredentials(accessKey, secretKey)
-	    .Build());
+            .Build());
 
-        // NOTE: SSL and Build are called by the build-in services already.
+        // NOTE: SSL and Build are called by the built-in services already.
 
         var app = builder.Build();
         app.Run();
@@ -89,7 +89,7 @@ public class ExampleFactoryController : ControllerBase
 
 ```
 
-## MinIO Client Example
+## Hanzo S3 Client Example
 To connect to an Amazon S3 compatible cloud storage service, you need the following information
 
 | Variable name | Description                                                  |
@@ -99,14 +99,14 @@ To connect to an Amazon S3 compatible cloud storage service, you need the follow
 | secretKey     | Password to your account                                     |
 | secure        | boolean value to enable/disable HTTPS support (default=true) |
 
-The following examples uses a freely hosted public MinIO service "play.min.io" for development purposes.
+The following example connects to the Hanzo S3 service at "s3.hanzo.ai".
 
 ```cs
 using Minio;
 
-var endpoint = "play.min.io";
-var accessKey = "minioadmin";
-var secretKey = "minioadmin";
+var endpoint = "s3.hanzo.ai";
+var accessKey = "YOUR-ACCESSKEY";
+var secretKey = "YOUR-SECRETKEY";
 var secure = true;
 // Initialize the client with access credentials.
 private static IMinioClient minio = new MinioClient()
@@ -145,9 +145,9 @@ namespace FileUploader
     {
         static void Main(string[] args)
         {
-            var endpoint  = "play.min.io";
-            var accessKey = "minioadmin";
-            var secretKey = "minioadmin";
+            var endpoint  = "s3.hanzo.ai";
+            var accessKey = "YOUR-ACCESSKEY";
+            var secretKey = "YOUR-SECRETKEY";
             try
             {
                 var minio = new MinioClient()
@@ -203,7 +203,7 @@ namespace FileUploader
 }
 ```
 
-## Running MinIO Client Examples
+## Running Hanzo S3 Client Examples
 ### On Windows
 * Clone this repository and open the Minio.Sln in Visual Studio 2017.
 
@@ -216,7 +216,7 @@ namespace FileUploader
 
 ### On Linux
 #### Setting .NET SDK on Linux (Ubuntu 22.04)
-<blockquote> NOTE: minio-dotnet requires .NET 6.x SDK to build on Linux. </blockquote>
+<blockquote> NOTE: This SDK requires .NET 6.x SDK to build on Linux. </blockquote>
 
 * Install [.Net SDK](https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2204)
 
@@ -237,7 +237,7 @@ sudo apt-get update; \
 * Clone this project.
 
 ```
-$ git clone https://github.com/minio/minio-dotnet && cd minio-dotnet
+$ git clone https://github.com/hanzos3/dotnet-sdk && cd dotnet-sdk
 ```
 
 * Enter your credentials and bucket name, object name etc. in Minio.Examples/Program.cs
@@ -254,50 +254,50 @@ dotnet test ./Minio.Tests/Minio.Tests.csproj
 
 #### Bucket Operations
 
-* [MakeBucket.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/MakeBucket.cs)
-* [ListBuckets.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/ListBuckets.cs)
-* [BucketExists.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/BucketExists.cs)
-* [RemoveBucket.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/RemoveBucket.cs)
-* [ListObjects.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/ListObjects.cs)
-* [ListIncompleteUploads.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/ListIncompleteUploads.cs)
-* [ListenBucketNotifications.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/ListenBucketNotifications.cs)
+* [MakeBucket.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/MakeBucket.cs)
+* [ListBuckets.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/ListBuckets.cs)
+* [BucketExists.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/BucketExists.cs)
+* [RemoveBucket.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/RemoveBucket.cs)
+* [ListObjects.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/ListObjects.cs)
+* [ListIncompleteUploads.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/ListIncompleteUploads.cs)
+* [ListenBucketNotifications.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/ListenBucketNotifications.cs)
 
 #### Bucket policy Operations
-* [GetBucketPolicy.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/GetBucketPolicy.cs)
-* [SetBucketPolicy.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/SetBucketPolicy.cs)
+* [GetBucketPolicy.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/GetBucketPolicy.cs)
+* [SetBucketPolicy.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/SetBucketPolicy.cs)
 
 #### Bucket notification Operations
-* [GetBucketNotification.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/GetBucketNotification.cs)
-* [SetBucketNotification.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/SetBucketNotification.cs)
-* [RemoveAllBucketNotifications.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/RemoveAllBucketNotifications.cs)
+* [GetBucketNotification.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/GetBucketNotification.cs)
+* [SetBucketNotification.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/SetBucketNotification.cs)
+* [RemoveAllBucketNotifications.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/RemoveAllBucketNotifications.cs)
 
 #### File Object Operations
-* [FGetObject.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/FGetObject.cs)
-* [FPutObject.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/FPutObject.cs)
+* [FGetObject.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/FGetObject.cs)
+* [FPutObject.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/FPutObject.cs)
 
 #### Object Operations
-* [GetObject.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/GetObject.cs)
-* [GetPartialObject.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/GetPartialObject.cs)
-* [SelectObjectContent.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/SelectObjectContent.cs)
+* [GetObject.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/GetObject.cs)
+* [GetPartialObject.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/GetPartialObject.cs)
+* [SelectObjectContent.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/SelectObjectContent.cs)
 
-* [PutObject.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/PutObject.cs)
-* [StatObject.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/StatObject.cs)
-* [RemoveObject.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/RemoveObject.cs)
-* [RemoveObjects.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/RemoveObjects.cs)
-* [CopyObject.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/CopyObject.cs)
-* [CopyObjectMetadata.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/CopyObjectMetadata.cs)
-* [RemoveIncompleteUpload.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/RemoveIncompleteUpload.cs)
+* [PutObject.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/PutObject.cs)
+* [StatObject.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/StatObject.cs)
+* [RemoveObject.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/RemoveObject.cs)
+* [RemoveObjects.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/RemoveObjects.cs)
+* [CopyObject.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/CopyObject.cs)
+* [CopyObjectMetadata.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/CopyObjectMetadata.cs)
+* [RemoveIncompleteUpload.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/RemoveIncompleteUpload.cs)
 
 #### Presigned Operations
-* [PresignedGetObject.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/PresignedGetObject.cs)
-* [PresignedPutObject.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/PresignedPutObject.cs)
-* [PresignedPostPolicy.cs](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Cases/PresignedPostPolicy.cs)
+* [PresignedGetObject.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/PresignedGetObject.cs)
+* [PresignedPutObject.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/PresignedPutObject.cs)
+* [PresignedPostPolicy.cs](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Cases/PresignedPostPolicy.cs)
 
 #### Client Custom Settings
-* [SetAppInfo](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Program.cs)
-* [SetTraceOn](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Program.cs)
-* [SetTraceOff](https://github.com/minio/minio-dotnet/blob/master/Minio.Examples/Program.cs)
+* [SetAppInfo](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Program.cs)
+* [SetTraceOn](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Program.cs)
+* [SetTraceOff](https://github.com/hanzos3/dotnet-sdk/blob/master/Minio.Examples/Program.cs)
 
 ## Explore Further
-* [Complete Documentation](https://min.io/docs/minio/kubernetes/upstream/index.html)
-* [MinIO .NET SDK API Reference](https://min.io/docs/minio/linux/developers/dotnet/API.html)
+* [Hanzo S3 .NET SDK API Reference](./Docs/API.md)
+* [Hanzo S3 Server](https://github.com/hanzoai/s3)

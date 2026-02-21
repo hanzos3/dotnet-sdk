@@ -1,5 +1,5 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage, (C) 2017 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage, (C) 2017 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ public static class Program
         // Note: s3 AccessKey and SecretKey needs to be added in App.config file
         // See instructions in README.md on running examples for more information.
         using var minio = new MinioClient()
-            .WithEndpoint("play.min.io")
+            .WithEndpoint("s3.hanzo.ai")
             .WithCredentials("Q3AM3UQ867SPQQA43P2F",
                 "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
             .WithSSL()

@@ -1,5 +1,5 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage, (C) 2017 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage, (C) 2017 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ namespace Minio;
 
 public class MinioClientFactory : IMinioClientFactory
 {
-    private const string DefaultEndpoint = "play.min.io";
+    private const string DefaultEndpoint = "s3.hanzo.ai";
     private readonly Action<IMinioClient> defaultConfigureClient;
 
     public MinioClientFactory(Action<IMinioClient> defaultConfigureClient)

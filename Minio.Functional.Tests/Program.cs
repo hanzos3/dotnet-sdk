@@ -1,6 +1,6 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage,
- * (C) 2019, 2020 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage,
+ * (C) 2019, 2020 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,7 +69,7 @@ internal static class Program
         }
         else
         {
-            endPoint = "play.min.io";
+            endPoint = "s3.hanzo.ai";
             accessKey = "Q3AM3UQ867SPQQA43P2F";
             secretKey = "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG";
             isSecure = true;
@@ -106,9 +106,9 @@ internal static class Program
         // Set HTTP Tracing Off
         // minioClient.SetTraceOff();
 
-        // Print Minio version in use
+        // Print Hanzo S3 version in use
         // var version = typeof(MinioClient).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
-        // Console.WriteLine($"\n  Minio package version is {version.Substring(0, version.IndexOf('+'))}\n");
+        // Console.WriteLine($"\n  Hanzo S3 package version is {version.Substring(0, version.IndexOf('+'))}\n");
 
         var runMode = Environment.GetEnvironmentVariable("MINT_MODE");
 
@@ -133,9 +133,9 @@ internal static class Program
         await FunctionalTest.ListenNotifications_Test1(minioClient).ConfigureAwait(false);
 
         // Try catch as 'finally' section needs to run in the Functional Tests
-        // Bucket notification is a minio specific feature.
+        // Bucket notification is a Hanzo S3 specific feature.
         // If the following test is run against AWS, then the SDK throws
-        // "Listening for bucket notification is specific only to `minio`
+        // "Listening for bucket notification is specific only to Hanzo S3
         // server endpoints".
         await FunctionalTest
             .ListenBucketNotificationsAsync_Test1(minioClient)

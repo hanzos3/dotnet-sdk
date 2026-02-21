@@ -1,5 +1,5 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage, (C) 2024 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage, (C) 2024 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ namespace Minio.Examples.Cases;
 
 internal static class ListenNotifications
 {
-    // Listen for gloabal notifications (a Minio-only extension)
+    // Listen for gloabal notifications (a Hanzo S3 extension)
     public static void Run(IMinioClient minio,
         List<EventType> events = null)
     {

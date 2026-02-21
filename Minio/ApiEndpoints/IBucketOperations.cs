@@ -1,6 +1,6 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage,
- * (C) 2017-2021 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage,
+ * (C) 2017-2021 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -130,7 +130,7 @@ public interface IBucketOperations
         CancellationToken cancellationToken = default);
 
     /// <summary>
-    ///     Subscribes to bucket change notifications (a Minio-only extension)
+    ///     Subscribes to bucket change notifications (a Hanzo S3 extension)
     /// </summary>
     /// <param name="args">
     ///     ListenBucketNotificationsArgs Arguments Object with information like Bucket name, listen events,

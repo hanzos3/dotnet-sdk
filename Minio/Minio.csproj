@@ -6,7 +6,7 @@
 		<AssemblyOriginatorKeyFile>..\Minio.snk</AssemblyOriginatorKeyFile>
 		<SignAssembly>true</SignAssembly>
 		<PublicSign Condition="'$(OS)' != 'Windows_NT'">true</PublicSign>
-		<Description>MinIO .NET SDK for Amazon S3 Compatible Cloud Storage.</Description>
+		<Description>Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage.</Description>
 		<Product>Minio</Product>
 	</PropertyGroup>
 

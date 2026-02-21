@@ -1,6 +1,6 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage,
- * (C) 2017-2021 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage,
+ * (C) 2017-2021 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -101,7 +101,7 @@ public partial class MinioClient
     {
         if (response is null)
             throw new ConnectionException(
-                "Response is nil. Please report this issue https://github.com/minio/minio-dotnet/issues",
+                "Response is nil. Please report this issue https://github.com/hanzos3/dotnet-sdk/issues",
                 response
             );
 
@@ -111,7 +111,7 @@ public partial class MinioClient
             || HttpStatusCode.MovedPermanently == response.StatusCode
         )
             throw new RedirectionException(
-                "Redirection detected. Please report this issue https://github.com/minio/minio-dotnet/issues"
+                "Redirection detected. Please report this issue https://github.com/hanzos3/dotnet-sdk/issues"
             );
 
         if (string.IsNullOrWhiteSpace(response.Content))

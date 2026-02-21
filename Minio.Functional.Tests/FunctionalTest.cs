@@ -1,6 +1,6 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage,
- * (C) 2017-2021 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage,
+ * (C) 2017-2021 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -279,7 +279,7 @@ public static class FunctionalTest
         for (var i = 0; i < length; i++)
             _ = result.Append(characters[rnd.Next(characters.Length)]);
 
-        return "minio-dotnet-example-" + result;
+        return "hanzos3-dotnet-example-" + result;
     }
 
     internal static void GenerateRandom500MB_File(string fileName)
@@ -4492,7 +4492,7 @@ public static class FunctionalTest
             { "contentType", contentType },
             { "data", "1B" },
             { "size", "1B" },
-            { "metaData", "customheader:minio-dotnet" }
+            { "metaData", "customheader:hanzos3-dotnet" }
         };
         try
         {

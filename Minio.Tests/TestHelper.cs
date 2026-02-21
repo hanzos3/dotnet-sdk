@@ -1,5 +1,5 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage, (C) 2017 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage, (C) 2017 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ namespace Minio.Tests;
 
 internal static class TestHelper
 {
-    internal const string Endpoint = "play.min.io";
+    internal const string Endpoint = "s3.hanzo.ai";
     internal const string AccessKey = "Q3AM3UQ867SPQQA43P2F";
     internal const string SecretKey = "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG";
 

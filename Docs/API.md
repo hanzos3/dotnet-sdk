@@ -1,13 +1,13 @@
-# .NET Client API Reference [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io)
+# .NET Client API Reference [![GitHub](https://img.shields.io/github/stars/hanzos3/dotnet-sdk)](https://github.com/hanzos3/dotnet-sdk)
 
-## Initialize MinIO Client object.
+## Initialize Hanzo S3 Client object.
 
-## MinIO
+## Hanzo S3
 
 ```cs
 IMinioClient minioClient = new MinioClient()
-                              .WithEndpoint("play.min.io")
-                              .WithCredentials("Q3AM3UQ867SPQQA43P2F", "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
+                              .WithEndpoint("s3.hanzo.ai")
+                              .WithCredentials("YOUR-ACCESSKEYID", "YOUR-SECRETACCESSKEY")
                               .WithSSL()
                               .Build();
 ```
@@ -59,7 +59,7 @@ IIMinioClient minioClient = new MinioClient()
 |                                                                                                                                                                 |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `public MinioClient(string endpoint, string accessKey = "", string secretKey = "", string region = "", string sessionToken="")`                                 |
-| Creates MinIO client object with given endpoint.AccessKey, secretKey, region and sessionToken are optional parameters, and can be omitted for anonymous access. |
+| Creates Hanzo S3 client object with given endpoint.AccessKey, secretKey, region and sessionToken are optional parameters, and can be omitted for anonymous access. |
 | The client object uses Http access by default. To use Https, chain method WithSSL() to client object to use secure transfer protocol                            |
 
 
@@ -69,9 +69,9 @@ __Parameters__
 |----------------|----------|---------------------------------------------------------------------------------------------------------------------------------|
 | `endpoint`     | _string_ | endPoint is an URL, domain name, IPv4 address or IPv6 address.Valid endpoints are listed below:                                 |
 |                |          | s3.amazonaws.com                                                                                                                |
-|                |          | play.min.io                                                                                                                     |
+|                |          | s3.hanzo.ai                                                                                                                     |
 |                |          | localhost                                                                                                                       |
-|                |          | play.min.io                                                                                                                     |
+|                |          | s3.hanzo.ai                                                                                                                     |
 | `accessKey`    | _string_ | accessKey is like user-id that uniquely identifies your account.This field is optional and can be omitted for anonymous access. |
 | `secretKey`    | _string_ | secretKey is the password to your account.This field is optional and can be omitted for anonymous access.                       |
 | `region`       | _string_ | region to which calls should be made.This field is optional and can be omitted.                                                 |
@@ -79,17 +79,17 @@ __Parameters__
 
 | Secure Access (TLS)                                                      |
 |--------------------------------------------------------------------------|
-| `Chain .WithSSL() or WithSSL(true) to MinIO Client object to use https. ` |
+| `Chain .WithSSL() or WithSSL(true) to Hanzo S3 Client object to use https. ` |
 | `Chain .WithSSL(false) or nothing to Client object to use http. ` |
 
 | Proxy                                                                     |
 |----------------------------------------------------------------------|
-| `Chain .WithProxy(proxyObject) to MinIO Client object to use proxy ` |
+| `Chain .WithProxy(proxyObject) to Hanzo S3 Client object to use proxy ` |
 
 |                                                                                                                                              |
 |----------------------------------------------------------------------------------------------------------------------------------------------|
 | `public MinioClient()`                                                                                                                       |
-| Creates MinIO client. This client gives an empty object that can be used with Chaining to populate only the member variables we need.        |
+| Creates Hanzo S3 client. This client gives an empty object that can be used with Chaining to populate only the member variables we need.        |
 | The next important step is to connect to an endpoint. You can chain one of the overloaded method WithEndpoint() to client object to connect. |
 | This client object also uses Http access by default. To use Https, chain method WithSSL() or WithSSL(true) to client object to use secure transfer protocol.  |
 | To use non-anonymous access, chain method WithCredentials() to the client object along with the access key & secret key.                     |
@@ -98,7 +98,7 @@ __Parameters__
 
 | Endpoint                                                                            |
 |-----------------------------------------------------------------------------|
-| `Chain .WithEndpoint() to MinIO Client object to initialize the endpoint. ` |
+| `Chain .WithEndpoint() to Hanzo S3 Client object to initialize the endpoint. ` |
 
 
 | Return Type     | Exceptions         |
@@ -108,24 +108,24 @@ __Parameters__
 
 __Examples__
 
-### MinIO
+### Hanzo S3
 
 
 ```cs
 // 1. Using Builder with public MinioClient(), Endpoint, Credentials & Secure (HTTPS) connection
 IMinioClient minioClient = new MinioClient()
-                              .WithEndpoint("play.min.io")
-                              .WithCredentials("Q3AM3UQ867SPQQA43P2F", "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
+                              .WithEndpoint("s3.hanzo.ai")
+                              .WithCredentials("YOUR-ACCESSKEYID", "YOUR-SECRETACCESSKEY")
                               .WithSSL()
                               .Build()
 // 2. Using Builder with public MinioClient(), Endpoint, Credentials & Secure (HTTPS) connection
 IMinioClient minioClient = new MinioClient()
-                              .WithEndpoint("play.min.io", 9000, true)
-                              .WithCredentials("Q3AM3UQ867SPQQA43P2F", "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
+                              .WithEndpoint("s3.hanzo.ai", 9000, true)
+                              .WithCredentials("YOUR-ACCESSKEYID", "YOUR-SECRETACCESSKEY")
                               .WithSSL()
                               .Build()
 
-// 3. Initializing minio client with proxy
+// 3. Initializing Hanzo S3 client with proxy
 IWebProxy proxy = new WebProxy("192.168.0.1", 8000);
 IMinioClient minioClient = new MinioClient()
                               .WithEndpoint("my-ip-address:9000")
@@ -1444,7 +1444,7 @@ catch (MinioException e)
 
 `IObservable<MinioNotificationRaw> ListenBucketNotificationsAsync(ListenBucketNotificationsArgs args, CancellationToken cancellationToken = default(CancellationToken))`
 
-Subscribes to bucket change notifications (a Minio-only extension)
+Subscribes to bucket change notifications (a Hanzo S3 extension)
 
 __Parameters__
 
@@ -1605,7 +1605,7 @@ __Example__
 try
 {
     BucketNotification notification = new BucketNotification();
-    Arn topicArn = new Arn("aws", "sns", "us-west-1", "412334153608", "topicminio");
+    Arn topicArn = new Arn("aws", "sns", "us-west-1", "412334153608", "topichanzos3");
 
     TopicConfig topicConfiguration = new TopicConfig(topicArn);
     List<EventType> events = []{ EventType.ObjectCreatedPut , EventType.ObjectCreatedCopy };
@@ -1614,7 +1614,7 @@ try
     topicConfiguration.AddFilterSuffix("jpg");
     notification.AddTopic(topicConfiguration);
 
-    QueueConfig queueConfiguration = new QueueConfig("arn:aws:sqs:us-west-1:482314153608:testminioqueue1");
+    QueueConfig queueConfiguration = new QueueConfig("arn:aws:sqs:us-west-1:482314153608:testhanzos3queue1");
     queueConfiguration.AddEvents([] { EventType.ObjectCreatedCompleteMultipartUpload });
     notification.AddQueue(queueConfiguration);
 

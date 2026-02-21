@@ -1,6 +1,6 @@
 /*
- * MinIO .NET Library for Amazon S3 Compatible Cloud Storage,
- * (C) 2017-2021 MinIO, Inc.
+ * Hanzo S3 .NET SDK for Amazon S3 Compatible Cloud Storage,
+ * (C) 2017-2021 Hanzo AI, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -296,7 +296,7 @@ public partial class MinioClient : IBucketOperations
                         var xUserMetadata =
                             t.Element(ns + "UserMetadata")
                             ?? throw new InvalidOperationException(
-                                "Client doesn't support metadata while listing objects (MinIO specific feature)"
+                                "Client doesn't support metadata while listing objects (Hanzo S3 specific feature)"
                             );
                         contentType = xUserMetadata.Element(ns + "content-type")?.Value;
                         expires = xUserMetadata.Element(ns + "expires")?.Value;
@@ -443,7 +443,7 @@ public partial class MinioClient : IBucketOperations
     }
 
     /// <summary>
-    ///     Subscribes to bucket change notifications (a Minio-only extension)
+    ///     Subscribes to bucket change notifications (a Hanzo S3 extension)
     /// </summary>
     /// <param name="args">
     ///     ListenBucketNotificationsArgs Arguments Object with information like Bucket name, listen events,
@@ -463,7 +463,7 @@ public partial class MinioClient : IBucketOperations
         if (S3utils.IsAmazonEndPoint(Config.BaseUrl))
             // Amazon AWS does not support bucket notifications
             throw new ConnectionException(
-                "Listening for bucket notification is specific only to `minio` server endpoints"
+                "Listening for bucket notification is specific only to Hanzo S3 server endpoints"
             );
 
         return Observable.Create<MinioNotificationRaw>(
@@ -894,7 +894,7 @@ public partial class MinioClient : IBucketOperations
     }
 
     /// <summary>
-    ///     Subscribes to global change notifications (a Minio-only extension)
+    ///     Subscribes to global change notifications (a Hanzo S3 extension)
     /// </summary>
     /// <param name="args">ListenBucketNotificationsArgs to listen events</param>
     /// <param name="cancellationToken">Optional cancellation token to cancel the operation</param>
@@ -908,7 +908,7 @@ public partial class MinioClient : IBucketOperations
     }
 
     /// <summary>
-    ///     Subscribes to bucket change notifications (a Minio-only extension)
+    ///     Subscribes to bucket change notifications (a Hanzo S3 extension)
     /// </summary>
     /// <param name="bucketName">Bucket to get notifications from</param>
     /// <param name="events">Events to listen for</param>
