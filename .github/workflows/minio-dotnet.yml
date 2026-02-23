@@ -171,7 +171,7 @@ jobs:
           S3_ROOT_PASSWORD: minio123
           S3_KMS_SECRET_KEY: my-minio-key:OSMM+vkKUTCvQs9YL/CVMIMt43HFhkUpqJxTmGl6rYw=
         run: |
-            wget --quiet -O /tmp/minio https://dl.min.io/server/minio/release/linux-amd64/minio
+            wget --quiet -O /tmp/minio https://github.com/hanzoai/s3/releases/latest/download/s3-linux-amd64
             chmod +x /tmp/minio
             mkdir -p /tmp/minio-config/certs/
             cp Minio.Functional.Tests/certs/* /tmp/minio-config/certs/
