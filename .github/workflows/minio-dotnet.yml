@@ -15,7 +15,7 @@ concurrency:
 env:
   Solution_Name: Minio.sln
   Test_Project_Path: ./Minio.Tests/Minio.Tests.csproj
-  Minio_Project_Path: ./Minio/Minio.csproj
+  S3_Project_Path: ./Minio/Minio.csproj
 
 jobs:
     
@@ -59,7 +59,7 @@ jobs:
 
       # Create the Nuget
       - name: Create the Nuget package
-        run: dotnet pack ${{ env.Minio_Project_Path }} --no-restore --no-build --configuration Release --output ./artifacts
+        run: dotnet pack ${{ env.S3_Project_Path }} --no-restore --no-build --configuration Release --output ./artifacts
 
       # Upload the normal artifacts
       - name: Upload the build output
@@ -167,9 +167,9 @@ jobs:
           SECRET_KEY: minio123
           ENABLE_HTTPS: 1
           ENABLE_KMS: 1
-          MINIO_ROOT_USER: minio
-          MINIO_ROOT_PASSWORD: minio123
-          MINIO_KMS_SECRET_KEY: my-minio-key:OSMM+vkKUTCvQs9YL/CVMIMt43HFhkUpqJxTmGl6rYw=
+          S3_ROOT_USER: minio
+          S3_ROOT_PASSWORD: minio123
+          S3_KMS_SECRET_KEY: my-minio-key:OSMM+vkKUTCvQs9YL/CVMIMt43HFhkUpqJxTmGl6rYw=
         run: |
             wget --quiet -O /tmp/minio https://dl.min.io/server/minio/release/linux-amd64/minio
             chmod +x /tmp/minio
